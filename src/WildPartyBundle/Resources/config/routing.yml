@@ -1,0 +1,3 @@
+wild_party_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: WildPartyBundle:Default:index }

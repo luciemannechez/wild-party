@@ -1,0 +1,34 @@
+WildPartyBundle\Entity\Soiree:
+    type: entity
+    table: null
+    repositoryClass: WildPartyBundle\Entity\SoireeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        dateDebut:
+            type: datetime
+            column: date_debut
+        nb_place:
+            type: integer
+        prix:
+            type: float
+            nullable: true
+
+    manyToOne:
+        type:
+            targetEntity: TypeSoiree
+            joinColumn:
+                name: type_id
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

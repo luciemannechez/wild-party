@@ -1,0 +1,27 @@
+WildPartyBundle\Entity\Utilisateur_soiree:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        paye:
+            type: boolean
+        montant:
+            type: float
+
+    manyToOne:
+        soiree:
+            targetEntity: Soiree
+            joinColumn:
+                name: soiree_id
+                referencedColumnName: id
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            joinColumn:
+                name: utilisateur_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

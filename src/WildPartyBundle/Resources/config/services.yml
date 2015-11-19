@@ -1,0 +1,21 @@
+services:
+#    wild_party.example:
+#        class: WildPartyBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    admin.soiree:
+        class: WildPartyBundle\Admin\SoireeAdmin
+        arguments: [~, WildPartyBundle\Entity\Soiree, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Soirée, group: Soirées }
+            
+    admin.type:
+        class: WildPartyBundle\Admin\TypeSoireeAdmin
+        arguments: [~, WildPartyBundle\Entity\TypeSoiree, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Type soirée, group: Types soirées }
+
+#    admin.utilisateurSoiree:
+#        class: WildPartyBundle\Admin\UtilisateurSoireeAdmin
+#        arguments: [~, WildPartyBundle\Entity\Utilisateur_soiree, ~]
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, label: Utilisateur soirée, group: Utilisateur soirées }
