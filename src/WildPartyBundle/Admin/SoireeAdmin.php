@@ -35,6 +35,14 @@ class SoireeAdmin extends Admin
             ->add('date_debut', 'datetime')
             ->add('nb_place')
             ->add('prix')
-            ->add('type');
+            ->add('type')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
+        ;
     }
 }
