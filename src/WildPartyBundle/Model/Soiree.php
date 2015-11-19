@@ -1,6 +1,7 @@
 <?php
 
 namespace WildPartyBundle\Model;
+use Application\Sonata\UserBundle\Entity\User;
 use WildPartyBundle\Entity\Utilisateur_soiree;
 
 /**
@@ -15,6 +16,7 @@ class Soiree extends \WildPartyBundle\Entity\Soiree
     private $montant;
     private $paye;
     private $id_soiree;
+
 
     /**
      * Set id
@@ -123,6 +125,8 @@ class Soiree extends \WildPartyBundle\Entity\Soiree
         $this->setType($soiree->getType());
         $this->setPrix($soiree->getPrix());
         $this->setIdSoiree($soiree->getId());
+        $this->setNbPersonnes($soiree->getNbPersonnes());
+        $this->setUser($soiree->getUser());
 
 
         if ( $soiree->getType() == "repas" ) {
@@ -135,7 +139,7 @@ class Soiree extends \WildPartyBundle\Entity\Soiree
         }
         else
         {
-            $this->montant = 0;
+            $this->setmontant = 0;
         }
 
         if ( isset($inscription) && $inscription->getPaye() ) {

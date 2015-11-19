@@ -11,7 +11,7 @@ class Utilisateur_soiree
     public function __construct()
     {
         $this->setPaye(false);
-        $this->setMontant(0.5);
+        $this->setMontant(0);
     }
 
     /**

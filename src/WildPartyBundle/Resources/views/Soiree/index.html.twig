@@ -1,29 +1,51 @@
 {% extends '::base.html.twig' %}
 
-{% block body %}
+{% block body -%}
+    <h1>Soiree list</h1>
 
-    <ul>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Datedebut</th>
+                <th>Nb_place</th>
+                <th>Nb_personnes</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('soiree_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.nbplace }}</td>
+                <td>{{ entity.nbpersonnes }}</td>
+                <td>{{ entity.prix }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('soiree_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('soiree_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    {% for soiree in soirees %}
-
-        <li>Nom : {{ soiree.nom }}</li>
-        <li>Description : {{ soiree.description }}</li>
-        <li>Type : {{ soiree.type }}</li>
-        <li>Nombre de place : {{ soiree.nbPlace }}</li>
-        <li>Date : {{ soiree.dateDebut|date('Y-m-d H:i') }}</li>
-        {% if soiree.prix is defined %}
-            <li>Prix : {{ soiree.prix }}</li>
-        {% endif %}
+        <ul>
         <li>
-            <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
-                {% if soiree.inscrit == true %}
-                    Se désinscrire
-                {% else %}
-                    S'inscrire
-                {% endif %}
+            <a href="{{ path('soiree_new') }}">
+                Create a new entry
             </a>
         </li>
-        <br/>
-    {% endfor %}
     </ul>
-{% endblock %}
+    {% endblock %}

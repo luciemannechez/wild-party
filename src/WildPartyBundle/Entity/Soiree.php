@@ -36,7 +36,6 @@ class Soiree
      */
     private $dateDebut;
 
-
     /**
      * Get id
      *
@@ -121,7 +120,7 @@ class Soiree
     /**
      * @var integer
      */
-    private $nb_place;
+    protected $nb_place = 0;
 
     /**
      * @var float
@@ -243,5 +242,48 @@ class Soiree
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * @var integer
+     */
+    private $nb_personnes = 0;
+
+
+    /**
+     * Set nbPersonnes
+     *
+     * @param integer $nbPersonnes
+     *
+     * @return Soiree
+     */
+    public function setNbPersonnes($nbPersonnes)
+    {
+        $this->nb_personnes = $nbPersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get nbPersonnes
+     *
+     * @return integer
+     */
+    public function getNbPersonnes()
+    {
+        return $this->nb_personnes;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     *
+     * @return Soiree
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

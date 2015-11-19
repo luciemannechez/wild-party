@@ -13,7 +13,6 @@ WildPartyBundle\Entity\Utilisateur_soiree:
             type: boolean
         montant:
             type: float
-            nullable: true
 
     manyToOne:
         soiree:

@@ -13,17 +13,19 @@ class SoireeAdmin extends Admin
     {
         $formMapper
             ->add('nom', 'text')
-            ->add('description', 'textarea')
+            ->add('description', 'textarea', array('required' => false))
             ->add('date_debut', 'datetime')
-            ->add('nb_place')
-            ->add('prix')
+            ->add('nb_place', null, array('label' => 'Nombre de place (-1 = illimité)' ))
+            ->add('prix', 'number', array('required' => false))
             ->add('type');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('date_debut', 'doctrine_orm_date_range')
             ->add('nom')
+            ->add('user')
             ->add('type');
     }
 
@@ -36,6 +38,7 @@ class SoireeAdmin extends Admin
             ->add('nb_place')
             ->add('prix')
             ->add('type')
+            ->add('user')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

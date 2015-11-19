@@ -99,11 +99,22 @@ sonata_block:
 sonata_user:
     security_acl: true
     manager_type: orm # can be orm or mongodb
-    admin:                  # Admin Classes
+    profile:  # Profile Form (firstname, lastname, etc ...)
+        form:
+            type:               application_sonata_user_profile
+            handler:            sonata.user.profile.form.handler.default
+            name:               sonata_user_profile_form
+            validation_groups:  [Profile]
+    admin:
         user:
-            class:          Sonata\UserBundle\Admin\Entity\UserAdmin
+            class:      Application\Sonata\UserBundle\Admin\Model\UserAdmin
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
+
+sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.role
+
 sonata_doctrine_orm_admin:
     templates:
         form:

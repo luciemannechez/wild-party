@@ -1,0 +1,30 @@
+soiree:
+    path:     /
+    defaults: { _controller: "WildPartyBundle:AffichageSoiree:index" }
+
+soiree_show:
+    path:     /{id}/show
+    defaults: { _controller: "WildPartyBundle:Soiree:show" }
+
+soiree_new:
+    path:     /new
+    defaults: { _controller: "WildPartyBundle:Soiree:new" }
+
+soiree_create:
+    path:     /create
+    defaults: { _controller: "WildPartyBundle:Soiree:create" }
+    methods:  POST
+
+soiree_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WildPartyBundle:Soiree:edit" }
+
+soiree_update:
+    path:     /{id}/update
+    defaults: { _controller: "WildPartyBundle:Soiree:update" }
+    methods:  [POST, PUT]
+
+soiree_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WildPartyBundle:Soiree:delete" }
+    methods:  [POST, DELETE]

@@ -1,13 +1,17 @@
+wild_party_soiree:
+    resource: "@WildPartyBundle/Resources/config/routing/soiree.yml"
+    prefix:   /soiree
+
 wild_party_homepage:
     path:     /
-    defaults: { _controller: WildPartyBundle:Soiree:index }
+    defaults: { _controller: WildPartyBundle:AffichageSoiree:index }
 
 wild_party_inscription:
     path: /inscription/{id_soiree}
-    defaults: { _controller: WildPartyBundle:Soiree:inscription }
+    defaults: { _controller: WildPartyBundle:AffichageSoiree:inscription }
     methods:  [POST, GET]
 
 wild_party_desinscription:
     path: /desinscription/{id_soiree}
-    defaults: { _controller: WildPartyBundle:Soiree:desinscription }
+    defaults: { _controller: WildPartyBundle:AffichageSoiree:desinscription }
     methods:  [POST, GET]
