@@ -13,9 +13,13 @@ class UtilisateurSoireeAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('user', 'choices')
-            ->add('soiree', 'choices')
-            ->add('paye', null)
+            ->add('user', null, array('required' => false))
+            ->add('soiree', null, array('required' => false))
+            ->add('paye', 'checkbox', array(
+                'label' => 'Payé',
+                'required' => false
+                )
+            )
             ->add('montant', null, array('required' => false));
     }
 
@@ -47,7 +51,7 @@ class UtilisateurSoireeAdmin extends Admin
         // to remove a single route
 
         // OR remove all route except named ones
-        $collection->clearExcept(array('list', 'show', 'edit'));
-        $collection->remove('delete');
+        //$collection->clearExcept(array('list', 'show', 'edit'));
+        $collection->remove('create');
     }
 }

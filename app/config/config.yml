@@ -104,6 +104,10 @@ sonata_user:
             class:          Sonata\UserBundle\Admin\Entity\UserAdmin
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
+sonata_doctrine_orm_admin:
+    templates:
+        form:
+            - WildPartyBundle:Admin:form_admin_fields.html.twig
 
 fos_user:
     db_driver:      orm # can be orm or odm
