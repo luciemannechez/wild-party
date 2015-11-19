@@ -15,7 +15,7 @@ class Utilisateur_soiree
     /**
      * @var boolean
      */
-    private $paye;
+    private $paye = false;
 
     /**
      * @var float

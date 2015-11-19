@@ -1,3 +1,13 @@
 wild_party_homepage:
     path:     /
     defaults: { _controller: WildPartyBundle:Soiree:index }
+
+wild_party_inscription:
+    path: /inscription/{id_soiree}
+    defaults: { _controller: WildPartyBundle:Soiree:inscription }
+    methods:  [POST, GET]
+
+wild_party_desinscription:
+    path: /desinscription/{id_soiree}
+    defaults: { _controller: WildPartyBundle:Soiree:desinscription }
+    methods:  [POST, GET]

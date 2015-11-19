@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-
+{{ dump() }}
     <ul>
 
     {% for soiree in soirees %}
@@ -13,7 +13,16 @@
         {% if soiree.prix is defined %}
             <li>Prix : {{ soiree.prix }}</li>
         {% endif %}
-        <li><a href="#" class="btn btn-primary">S'inscrire</a></li>
+        <li>
+            <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.id }) }}" class="btn btn-primary">
+                    S'inscrire
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('wild_party_desinscription',{ 'id_soiree': soiree.id }) }}" class="btn btn-primary">
+                Se désinscrire
+            </a>
+        </li>
         <br/>
     {% endfor %}
     </ul>
