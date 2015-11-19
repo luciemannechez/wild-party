@@ -173,7 +173,7 @@ class Soiree
         return $this->prix;
     }
     /**
-     * @var \WildPartyBundle\Entity\Type
+     * @var \WildPartyBundle\Entity\TypeSoiree
      */
     private $type;
 
@@ -181,11 +181,11 @@ class Soiree
     /**
      * Set type
      *
-     * @param \WildPartyBundle\Entity\Type $type
+     * @param \WildPartyBundle\Entity\TypeSoiree $type
      *
      * @return Soiree
      */
-    public function setType(\WildPartyBundle\Entity\Type $type = null)
+    public function setType(\WildPartyBundle\Entity\TypeSoiree $type = null)
     {
         $this->type = $type;
 
@@ -195,7 +195,7 @@ class Soiree
     /**
      * Get type
      *
-     * @return \WildPartyBundle\Entity\Type
+     * @return \WildPartyBundle\Entity\TypeSoiree
      */
     public function getType()
     {

@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <ul>
+
+    {% for soiree in soirees %}
+        <li>Nom : {{ soiree.nom }}</li>
+        <li>Description : {{ soiree.description }}</li>
+        <li>Type : {{ soiree.type }}</li>
+        <li>Nombre de place : {{ soiree.nbPlace }}</li>
+        <li>Date : {{ soiree.dateDebut|date('Y-m-d H:i') }}</li>
+        {% if soiree.prix is defined %}
+            <li>Prix : {{ soiree.prix }}</li>
+        {% endif %}
+        <li><a href="#" class="btn btn-primary">S'inscrire</a></li>
+        <br/>
+    {% endfor %}
+    </ul>
+{% endblock %}
