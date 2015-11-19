@@ -1,6 +1,7 @@
 WildPartyBundle\Entity\Utilisateur_soiree:
     type: entity
     table: null
+    repositoryClass: WildPartyBundle\Entity\Utilisateur_soireeRepository
     id:
         id:
             type: integer

@@ -14,8 +14,8 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Type soirée, group: Types soirées }
 
-#    admin.utilisateurSoiree:
-#        class: WildPartyBundle\Admin\UtilisateurSoireeAdmin
-#        arguments: [~, WildPartyBundle\Entity\Utilisateur_soiree, ~]
-#        tags:
-#            - { name: sonata.admin, manager_type: orm, label: Utilisateur soirée, group: Utilisateur soirées }
+    admin.utilisateur_soiree:
+        class: WildPartyBundle\Admin\UtilisateurSoireeAdmin
+        arguments: [~, WildPartyBundle\Entity\Utilisateur_soiree, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Utilisateur soirée, group: Utilisateur soirées }

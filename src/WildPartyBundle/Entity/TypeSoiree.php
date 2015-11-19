@@ -55,4 +55,33 @@ class TypeSoiree
     {
         return $this->type;
     }
+    /**
+     * @var boolean
+     */
+    private $prix_fixe;
+
+
+    /**
+     * Set prixFixe
+     *
+     * @param boolean $prixFixe
+     *
+     * @return TypeSoiree
+     */
+    public function setPrixFixe($prixFixe)
+    {
+        $this->prix_fixe = $prixFixe;
+
+        return $this;
+    }
+
+    /**
+     * Get prixFixe
+     *
+     * @return boolean
+     */
+    public function getPrixFixe()
+    {
+        return $this->prix_fixe;
+    }
 }

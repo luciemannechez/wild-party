@@ -7,6 +7,13 @@ namespace WildPartyBundle\Entity;
  */
 class Utilisateur_soiree
 {
+
+    public function __construct()
+    {
+        $this->setPaye(false);
+        $this->setMontant(0.5);
+    }
+
     /**
      * @var integer
      */
@@ -15,7 +22,7 @@ class Utilisateur_soiree
     /**
      * @var boolean
      */
-    private $paye = false;
+    private $paye;
 
     /**
      * @var float
@@ -137,5 +144,34 @@ class Utilisateur_soiree
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * @var boolean
+     */
+    private $inscrit = false;
+
+
+    /**
+     * Set inscrit
+     *
+     * @param boolean $inscrit
+     *
+     * @return Utilisateur_soiree
+     */
+    public function setInscrit($inscrit)
+    {
+        $this->inscrit = $inscrit;
+
+        return $this;
+    }
+
+    /**
+     * Get inscrit
+     *
+     * @return boolean
+     */
+    public function getInscrit()
+    {
+        return $this->inscrit;
     }
 }

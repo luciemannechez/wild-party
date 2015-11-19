@@ -11,4 +11,6 @@ WildPartyBundle\Entity\TypeSoiree:
         type:
             type: string
             length: 255
+        prix_fixe:
+            type: boolean
     lifecycleCallbacks: {  }

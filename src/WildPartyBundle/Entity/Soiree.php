@@ -12,6 +12,10 @@ class Soiree
         $this->setDateDebut(new \DateTime('now'));
     }
 
+    public function __toString() {
+        return (string)$this->id;
+    }
+
     /**
      * @var integer
      */

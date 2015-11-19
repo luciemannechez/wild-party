@@ -15,52 +15,49 @@ class SoireeController extends Controller
 
         $soirees = $em->getRepository('WildPartyBundle:Soiree')->findAll();
 
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $models = array();
+        foreach ($soirees as $soiree)
+        {
+            $utilisateur_soiree = $em->getRepository('WildPartyBundle:Utilisateur_soiree')->findOneBy(array('soiree' => $soiree, 'user' => $user));
+            $model = new \WildPartyBundle\Model\Soiree($soiree, $utilisateur_soiree);
+            $models[] = $model;
+
+        }
+
         return $this->render('WildPartyBundle:Soiree:index.html.twig', array(
-            'soirees' => $soirees
+            'soirees' => $models,
         ));
     }
 
     public function inscriptionAction(Soiree $id_soiree)
     {
+        $user = $this->getUser();
+
         $em = $this->getDoctrine()->getManager();
 
-        $entity = new Utilisateur_soiree();
+        $utilisateur_soiree = $em->getRepository('WildPartyBundle:Utilisateur_soiree')->findOneBy(array('soiree' => $id_soiree, 'user' => $user));
 
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $soirees = $em->getRepository('WildPartyBundle:Soiree')->findOneById($id_soiree);
+        if ($utilisateur_soiree == null)
+        {
+            // Inscription
+            $soiree = $em->getRepository('WildPartyBundle:Soiree')->findOneById($id_soiree);
+            $entity = new Utilisateur_soiree();
+            $entity->setUser($user);
+            $entity->setSoiree($id_soiree);
+            $entity->setMontant($soiree->getPrix());
 
-        $prix = $soirees->getPrix();
-
-        $entity->setUser($user);
-        $entity->setSoiree($id_soiree);
-        $entity->setMontant($prix);
-
-        $em->persist($entity);
-        $em->flush();
-
-        $soireesAll = $em->getRepository('WildPartyBundle:Soiree')->findAll();
-
-        return $this->redirect($this->generateUrl('wild_party_homepage', array(
-            'soirees' => $soireesAll
-        )));
-    }
-
-    public function desinscriptionAction(Soiree $id_soiree)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('WildPartyBundle:Utilisateur_soiree')->findOneBySoiree($id_soiree);
-
-        $soireesAll = $em->getRepository('WildPartyBundle:Soiree')->findAll();
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Utilisateur_soiree entity.');
+            $em->persist($entity);
+            $em->flush();
+        }
+        else
+        {
+            // Desinscription
+            $em->remove($utilisateur_soiree);
+            $em->flush();
         }
 
-        $em->remove($entity);
-        $em->flush();
-
-        return $this->redirect($this->generateUrl('wild_party_homepage', array(
-            'soirees' => $soireesAll
-        )));
+        return $this->redirect($this->generateUrl('wild_party_homepage'));
     }
 }
