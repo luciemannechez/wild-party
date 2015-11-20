@@ -63,7 +63,9 @@
                 <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Nombre de places</th>
                 <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Nombre de personnes</th>
                 <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Prix</th>
-                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Actions</th>
+                {% if old == false %}
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -75,7 +77,13 @@
                     <td class="date">{{ soiree.dateDebut|date('Y-m-d H:i') }}</td>
                     <td>{{ soiree.type }}</td>
                     <td>{{ soiree.user.username }}</td>
-                    <td>{{ soiree.nbPlace }}</td>
+                    <td>
+                        {% if soiree.nbPlace == -1 %}
+                            Illimité
+                        {% else %}
+                            {{ soiree.nbPlace }}
+                        {% endif %}
+                    </td>
                     <td>{{ soiree.nbPersonnes }}</td>
                     <td>
                         {% if soiree.prix is not null %}
@@ -84,33 +92,40 @@
                             Non défini
                         {% endif %}
                     </td>
-                    <td>
-                        {% if soiree.nbPlace > 0 %}
-                            <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
+                    {% if old == false %}
+                        <td>
+                            {% if soiree.nbPlace > 0 %}
+                                <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
+                                    {% if soiree.inscrit == true %}
+                                        Se désinscrire
+                                    {% else %}
+                                        S'inscrire
+                                    {% endif %}
+                                </a>
+                            {% elseif soiree.nbPlace == -1 %}
+                                <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
+                                    {% if soiree.inscrit == true %}
+                                        Se désinscrire
+                                    {% else %}
+                                        S'inscrire
+                                    {% endif %}
+                                </a>
+                            {% else %}
+                                <button type="button" disabled class="btn btn-primary">Complet</button>
                                 {% if soiree.inscrit == true %}
-                                    Se désinscrire
-                                {% else %}
-                                    S'inscrire
+                                    <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
+                                            Se désinscrire
+                                    </a>
                                 {% endif %}
-                            </a>
-                        {% elseif soiree.nbPlace == -1 %}
-                            <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
-                                {% if soiree.inscrit == true %}
-                                    Se désinscrire
-                                {% else %}
-                                    S'inscrire
-                                {% endif %}
-                            </a>
-                        {% else %}
-                            <button type="button" disabled class="btn btn-primary">Complet</button>
-                        {% endif %}
+                            {% endif %}
 
-                        {% if soiree.user == app.user %}
-                            <a href="{{ path('soiree_edit',{ 'id': soiree.idSoiree }) }}" class="btn btn-primary">
-                                Editer
-                            </a>
-                        {% endif %}
-                    </td>
+                            {% if soiree.user == app.user %}
+                                <a href="{{ path('soiree_edit',{ 'id': soiree.idSoiree }) }}" class="btn btn-primary">
+                                    Editer
+                                </a>
+                            {% endif %}
+                        </td>
+                    {% endif %}
 
                 </tr>
 

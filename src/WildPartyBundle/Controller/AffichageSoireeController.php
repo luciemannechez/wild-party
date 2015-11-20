@@ -73,12 +73,10 @@ class AffichageSoireeController extends Controller
             }
 
             if ($soiree->getNbPlace() == 0) {
-                $soiree->setNbPersonnes($soiree->getNbPersonnes());
+                $soiree->setNbPlace($soiree->getNbPlace() + 1);
+            }
 
-            }
-            else {
-                $soiree->setNbPersonnes($soiree->getNbPersonnes() - 1);
-            }
+            $soiree->setNbPersonnes($soiree->getNbPersonnes() - 1);
 
             $em->remove($utilisateur_soiree);
             $em->flush();
