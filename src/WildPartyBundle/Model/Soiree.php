@@ -12,7 +12,7 @@ use WildPartyBundle\Entity\Utilisateur_soiree;
  */
 class Soiree extends \WildPartyBundle\Entity\Soiree
 {
-    private $inscrit;
+    private $inscrit = null;
     private $montant;
     private $paye;
     private $id_soiree;

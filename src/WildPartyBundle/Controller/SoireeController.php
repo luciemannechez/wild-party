@@ -47,7 +47,6 @@ class SoireeController extends Controller
             $entity->setUser($user);
 
 
-
             $em->persist($entity);
             $em->flush();
 
@@ -209,7 +208,7 @@ class SoireeController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('soiree'));
+        return $this->redirect($this->generateUrl('wild_party_homepage'));
     }
 
     /**

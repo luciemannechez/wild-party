@@ -24,6 +24,7 @@ class AffichageSoireeController extends Controller
             $utilisateur_soiree = $em->getRepository('WildPartyBundle:Utilisateur_soiree')->findOneBy(array('soiree' => $soiree, 'user' => $user));
 
             $model = new \WildPartyBundle\Model\Soiree($soiree, $utilisateur_soiree);
+
             $models[] = $model;
 
         }
