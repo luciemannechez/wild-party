@@ -44,12 +44,12 @@
 {% block body %}
 
     {% if old == false %}
-        <div class="nav-soiree"><a href="{{ path('soiree_new') }}" class="btn btn-danger">Proposer une soirée</a></div>
-        <div class="nav-soiree"><a href="{{ path('wild_party_old_soiree') }}" class="btn btn-danger">Anciennes soirées</a></div>
+        <div class="nav-soiree"><a href="{{ path('soiree_new') }}" class="btn btn-info">Proposer une soirée</a></div>
+        <div class="nav-soiree"><a href="{{ path('wild_party_old_soiree') }}" class="btn btn-info">Anciennes soirées</a></div>
     {% else %}
-        <div class="nav-soiree"><a href="{{ path('wild_party_homepage') }}" class="btn btn-danger">Nouvelles soirées</a></div>
+        <div class="nav-soiree"><a href="{{ path('wild_party_homepage') }}" class="btn btn-info">Nouvelles soirées</a></div>
     {% endif %}
-       <div class="nav-soiree"> <a href="{{ path('wild_party_my_soirees') }}" class="btn btn-danger">Mes soirées</a></div>
+       <div class="nav-soiree"> <a href="{{ path('wild_party_my_soirees') }}" class="btn btn-info">Mes soirées</a></div>
 
     <body onload="alternate('thetable')">
     <table class="tablesaw table table-striped" data-tablesaw-sortable data-tablesaw-sortable-switch id='thetable'>
