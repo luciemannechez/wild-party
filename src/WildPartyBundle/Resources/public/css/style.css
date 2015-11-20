@@ -1,0 +1,15 @@
+
+.odd{
+    background-color: white;
+    }
+
+.even{
+    background-color: #FAF0E6;
+    }
+.moi{
+    width: 200px;
+    align:center;
+    display: block;
+    margin : auto;
+    list-style: none;
+}

@@ -1,16 +1,50 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/wildparty/css/tablesaw.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/wildparty/css/style.css') }}">
+
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('bundles/wildparty/js/tablesaw.js') }}"></script>
     <script src="{{ asset('bundles/wildparty/js/tablesaw-init.js') }}"></script>
+    <script>
+        var i;
+        function alternate(id){
+
+            if(document.getElementsByTagName){
+
+                var table = document.getElementById(id);
+
+                var rows = table.getElementsByTagName("tr");
+
+                for(i = 0; i < rows.length; i++){
+
+                    //manipulate rows
+
+                    if(i % 2 == 0){
+
+                        rows[i].className = "even";
+
+                    }else{
+
+                        rows[i].className = "odd";
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
 {% endblock %}
 
 {% block body %}
 
-    <table class="tablesaw table table-striped" data-tablesaw-sortable data-tablesaw-sortable-switch>
+    <body onload="alternate('thetable')">
+    <table class="tablesaw table table-striped" data-tablesaw-sortable data-tablesaw-sortable-switch id='thetable'>
         <thead>
             <tr>
                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Nom</th>
@@ -62,13 +96,19 @@
                                 Editer
                             </a>
                         {% endif %}
+                        <br />
+                        <hr>
+                        <br />
                     </td>
+
                 </tr>
+
                 {% endfor %}
+
         </tbody>
     </table>
 
-
+</body>
 {#    <ul>
 
         {% for soiree in soirees %}

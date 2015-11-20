@@ -10,7 +10,16 @@ file that was distributed with this source code.
 #}
 
 {% extends "::base.html.twig" %}
+{% block javascripts %}
+    <script>
+        function PlaySound(path) {
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', path);
+            audioElement.play();
+        }
 
+    </script>
+{% endblock %}
 {% block body %}
 {% block fos_user_content %}
     <div class="row">
@@ -68,18 +77,19 @@ file that was distributed with this source code.
 
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <input type="submit" id="_submit" name="_submit" class="btn btn-primary"
+                                <input type="submit" id="_submit" name="_submit" class="btn btn-primary moi"
                                        value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"/>
                             </div>
                         </div>
+                        <button id="bt" class="btn btn-info moi" onclick="javascript:PlaySound('986.mp3');"><a href="{{ path('sonata_user_registration_register') }}">inscription</a>
+                        </button>
+
                     </form>
                 </div>
             </div>
 
         </div>
-        <div class="col-md-12">
-            {% render controller("FOSUserBundle:Registration:register") %}
-        </div>
+
     </div>
 {% endblock fos_user_content %}
 {% endblock %}

@@ -49,7 +49,7 @@ class SoireeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('soiree'));
+            return $this->redirect($this->generateUrl('wild_party_homepage'));
         }
 
         return $this->render('WildPartyBundle:Soiree:new.html.twig', array(
