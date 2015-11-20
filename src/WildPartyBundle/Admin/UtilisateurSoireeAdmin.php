@@ -35,7 +35,7 @@ class UtilisateurSoireeAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('user')
-            ->add('soiree')
+            ->add('soiree.nom')
             ->add('paye')
             ->add('montant')
             ->add('penalites')
