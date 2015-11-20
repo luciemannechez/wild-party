@@ -45,3 +45,11 @@
 body{
     background-color: #F0F9F7;
     }
+a{
+    color:white;
+
+}
+a:hover{
+    text-decoration: none;
+    color: white;
+}

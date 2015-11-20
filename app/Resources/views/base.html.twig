@@ -19,7 +19,7 @@
 
         {% if app.user %}
             <h1 class="text-center bienvenue">Wild Party</h1>
-            <button class="btn center-block" ><a href="{{ path('sonata_user_admin_security_logout') }}">Déconnexion</a></button>
+            <button class="btn btn-danger center-block" ><a href="{{ path('sonata_user_admin_security_logout') }}">Déconnexion</a></button>
         {% else %}
             <h1 class="text-center bienvenue">Wild Party</h1>
         {% endif %}
