@@ -37,3 +37,11 @@
     display: inline-block;
     margin:5px auto;
 }
+
+.bienvenue{
+    background-color: #CED8F6;
+    height: 50px;
+}
+body{
+    background-color: #F0F9F7;
+    }
