@@ -12,19 +12,22 @@ class TypeSoireeAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('type', 'text');
+            ->add('type', 'text')
+            ->add('prix_fixe', 'checkbox');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('type');
+            ->add('type')
+            ->add('prix_fixe');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('type')
+            ->add('prix_fixe')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

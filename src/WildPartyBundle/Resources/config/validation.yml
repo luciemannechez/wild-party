@@ -1,0 +1,4 @@
+# src/WildPartyBundle/Resources/config/validation.yml
+WildPartyBundle\Entity\Soiree:
+    constraints:
+        - Callback: [isPrixFixe]

@@ -15,3 +15,7 @@ wild_party_desinscription:
     path: /desinscription/{id_soiree}
     defaults: { _controller: WildPartyBundle:AffichageSoiree:desinscription }
     methods:  [POST, GET]
+
+wild_party_old_soiree:
+    path:     /anciennes_soirees
+    defaults: { _controller: WildPartyBundle:AffichageSoiree:oldSoiree }

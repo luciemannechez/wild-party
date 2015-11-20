@@ -1,6 +1,8 @@
 <?php
 
 namespace WildPartyBundle\Entity;
+use Symfony\Component\Validator\Context\ExecutionContext;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Soiree
@@ -14,6 +16,20 @@ class Soiree
 
     public function __toString() {
         return (string)$this->id;
+    }
+
+    /**Validate paypalEmailAddress if paypal is selected
+     * @param ExecutionContext $context
+     * @return void
+     */
+    public function isPrixFixe(ExecutionContextInterface $context)
+    {
+        if (in_array($this->type->getPrixFixe(), array(true))) {
+            // If you're using the new 2.5 validation API (you probably are!)
+            $context->buildViolation('Le prix doit être renseigné')
+                ->atPath('prix')
+                ->addViolation();
+        }
     }
 
     /**
@@ -120,7 +136,7 @@ class Soiree
     /**
      * @var integer
      */
-    protected $nb_place = 0;
+    protected $nb_place = -1;
 
     /**
      * @var float
@@ -204,45 +220,7 @@ class Soiree
     {
         return $this->type;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $user;
-
-
-    /**
-     * Add user
-     *
-     * @param \Application\Sonata\UserBundle\Entity\User $user
-     *
-     * @return Soiree
-     */
-    public function addUser(\Application\Sonata\UserBundle\Entity\User $user)
-    {
-        $this->user[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @param \Application\Sonata\UserBundle\Entity\User $user
-     */
-    public function removeUser(\Application\Sonata\UserBundle\Entity\User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+    
     /**
      * @var integer
      */
@@ -274,6 +252,11 @@ class Soiree
     }
 
     /**
+     * @var \Application\Sonata\UserBundle\Entity\User
+     */
+    private $user;
+
+    /**
      * Set user
      *
      * @param \Application\Sonata\UserBundle\Entity\User $user
@@ -285,5 +268,15 @@ class Soiree
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

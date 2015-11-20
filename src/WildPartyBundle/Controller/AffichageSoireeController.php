@@ -15,7 +15,7 @@ class AffichageSoireeController extends Controller
 
         $soirees = $em->getRepository('WildPartyBundle:Soiree')->findSoireesFutur();
 
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
 
         $models = array();
         foreach ($soirees as $soiree)
@@ -29,6 +29,7 @@ class AffichageSoireeController extends Controller
 
         return $this->render('WildPartyBundle:AffichageSoiree:index.html.twig', array(
             'soirees' => $models,
+            'old' => false
         ));
     }
 
@@ -81,5 +82,29 @@ class AffichageSoireeController extends Controller
         }
 
         return $this->redirect($this->generateUrl('wild_party_homepage'));
+    }
+
+    public function oldSoireeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $soirees = $em->getRepository('WildPartyBundle:Soiree')->findSoireesPast();
+
+        $user = $this->getUser();
+
+        $models = array();
+        foreach ($soirees as $soiree)
+        {
+            $utilisateur_soiree = $em->getRepository('WildPartyBundle:Utilisateur_soiree')->findOneBy(array('soiree' => $soiree, 'user' => $user));
+
+            $model = new \WildPartyBundle\Model\Soiree($soiree, $utilisateur_soiree);
+            $models[] = $model;
+
+        }
+
+        return $this->render('WildPartyBundle:AffichageSoiree:index.html.twig', array(
+            'soirees' => $models,
+            'old' => true
+        ));
     }
 }

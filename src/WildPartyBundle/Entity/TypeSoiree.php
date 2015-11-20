@@ -58,7 +58,7 @@ class TypeSoiree
     /**
      * @var boolean
      */
-    private $prix_fixe;
+    private $prix_fixe = false;
 
 
     /**

@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-
+    {{ dump(soirees) }}
     <ul>
 
         {% for soiree in soirees %}
@@ -60,10 +60,6 @@
             <br/>
         {% endfor %}
     </ul>
-    {% if old == false %}
-        <a href="{{ path('soiree_new') }}" class="btn btn-danger">Proposer une soirée</a>
-        <a href="{{ path('wild_party_old_soiree') }}" class="btn btn-danger">Anciennes soirées</a>
-    {% else %}
-        <a href="{{ path('wild_party_homepage') }}" class="btn btn-danger">Nouvelles soirées</a>
-    {% endif %}
+
+    <a href="{{ path('soiree_new') }}" class="btn btn-danger">Proposer une soirée</a>
 {% endblock %}

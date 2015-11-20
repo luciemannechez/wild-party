@@ -1,7 +1,3 @@
-soiree:
-    path:     /
-    defaults: { _controller: "WildPartyBundle:AffichageSoiree:index" }
-
 soiree_show:
     path:     /{id}/show
     defaults: { _controller: "WildPartyBundle:Soiree:show" }

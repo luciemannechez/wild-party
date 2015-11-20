@@ -20,4 +20,15 @@ class SoireeRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('s.dateDebut', 'ASC');
         return $queryBuilder->getQuery()->getResult();
     }
+
+    public function findSoireesPast()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('s')
+            ->from($this->_entityName, 's')// Dans un repository, $this->_entityName est le namespace de l'entité gérée
+            ->Where('s.dateDebut <= :now')
+            ->setParameter('now', new \DateTime('now'))
+            ->orderBy('s.dateDebut', 'ASC');
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

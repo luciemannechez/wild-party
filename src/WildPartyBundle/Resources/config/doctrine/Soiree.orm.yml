@@ -38,5 +38,6 @@ WildPartyBundle\Entity\Soiree:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+            cascade: ["persist", "merge"]
 
     lifecycleCallbacks: {  }

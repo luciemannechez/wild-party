@@ -16,8 +16,8 @@ class SoireeAdmin extends Admin
             ->add('description', 'textarea', array('required' => false))
             ->add('date_debut', 'datetime')
             ->add('nb_place', null, array('label' => 'Nombre de place (-1 = illimité)' ))
-            ->add('prix', 'number', array('required' => false))
-            ->add('type');
+            ->add('type')
+            ->add('prix', 'number', array('required' => false));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
