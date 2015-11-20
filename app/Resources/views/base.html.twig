@@ -25,12 +25,13 @@
         {% endif %}
     </ul>
 </header>
+<div class="wrap">
+    <div class="container">
+        <div class="row">
 
-<div class="container">
-    <div class="row">
+            {% block body %}{% endblock %}
 
-        {% block body %}{% endblock %}
-
+        </div>
     </div>
 </div>
 <script src="{{ asset('bundles/wildparty/js/jquery-2.1.4.min.js') }}"></script>

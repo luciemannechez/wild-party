@@ -109,4 +109,27 @@ class AffichageSoireeController extends Controller
             'old' => true
         ));
     }
+
+    public function mySoireesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $soirees = $em->getRepository('WildPartyBundle:Soiree')->findByUser($user);
+
+        $models = array();
+        foreach ($soirees as $soiree)
+        {
+            $utilisateur_soiree = $em->getRepository('WildPartyBundle:Utilisateur_soiree')->findOneBy(array('soiree' => $soiree, 'user' => $user));
+
+            $model = new \WildPartyBundle\Model\Soiree($soiree, $utilisateur_soiree);
+            $models[] = $model;
+
+        }
+
+        return $this->render('WildPartyBundle:AffichageSoiree:index.html.twig', array(
+            'soirees' => $models,
+            'old' => false
+        ));
+    }
 }

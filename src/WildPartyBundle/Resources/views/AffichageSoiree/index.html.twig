@@ -43,6 +43,14 @@
 
 {% block body %}
 
+    {% if old == false %}
+        <div class="nav-soiree"><a href="{{ path('soiree_new') }}" class="btn btn-danger">Proposer une soirée</a></div>
+        <div class="nav-soiree"><a href="{{ path('wild_party_old_soiree') }}" class="btn btn-danger">Anciennes soirées</a></div>
+    {% else %}
+        <div class="nav-soiree"><a href="{{ path('wild_party_homepage') }}" class="btn btn-danger">Nouvelles soirées</a></div>
+    {% endif %}
+       <div class="nav-soiree"> <a href="{{ path('wild_party_my_soirees') }}" class="btn btn-danger">Mes soirées</a></div>
+
     <body onload="alternate('thetable')">
     <table class="tablesaw table table-striped" data-tablesaw-sortable data-tablesaw-sortable-switch id='thetable'>
         <thead>
@@ -51,7 +59,7 @@
                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Description</th>
                 <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="3">Date</th>
                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Type soirée</th>
-                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"><abbr title="Rotten Tomato Rating">Initiateur</abbr></th>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">Initiateur</th>
                 <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Nombre de places</th>
                 <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Nombre de personnes</th>
                 <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Prix</th>
@@ -64,12 +72,18 @@
                 <tr>
                     <td class="title">{{ soiree.nom }}</td>
                     <td>{{ soiree.description }}</td>
-                    <td>{{ soiree.dateDebut|date('Y-m-d H:i') }}</td>
+                    <td class="date">{{ soiree.dateDebut|date('Y-m-d H:i') }}</td>
                     <td>{{ soiree.type }}</td>
                     <td>{{ soiree.user.username }}</td>
                     <td>{{ soiree.nbPlace }}</td>
                     <td>{{ soiree.nbPersonnes }}</td>
-                    <td>{{ soiree.prix }}</td>
+                    <td>
+                        {% if soiree.prix is not null %}
+                            {{ soiree.prix }}
+                        {% else %}
+                            Non défini
+                        {% endif %}
+                    </td>
                     <td>
                         {% if soiree.nbPlace > 0 %}
                             <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
@@ -96,9 +110,6 @@
                                 Editer
                             </a>
                         {% endif %}
-                        <br />
-                        <hr>
-                        <br />
                     </td>
 
                 </tr>
@@ -167,10 +178,4 @@
             <br/>
         {% endfor %}
     </ul>#}
-    {% if old == false %}
-        <a href="{{ path('soiree_new') }}" class="btn btn-danger">Proposer une soirée</a>
-        <a href="{{ path('wild_party_old_soiree') }}" class="btn btn-danger">Anciennes soirées</a>
-    {% else %}
-        <a href="{{ path('wild_party_homepage') }}" class="btn btn-danger">Nouvelles soirées</a>
-    {% endif %}
 {% endblock %}

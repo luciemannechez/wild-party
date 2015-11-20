@@ -19,3 +19,7 @@ wild_party_desinscription:
 wild_party_old_soiree:
     path:     /anciennes_soirees
     defaults: { _controller: WildPartyBundle:AffichageSoiree:oldSoiree }
+
+wild_party_my_soirees:
+    path:     /mes_soirees
+    defaults: { _controller: WildPartyBundle:AffichageSoiree:mySoirees }

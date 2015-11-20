@@ -14,3 +14,26 @@
     margin : auto;
     list-style: none;
 }
+
+#thetable td {
+    font-size: 15px;
+}
+
+.wrap {
+    padding:10px;
+}
+
+#thetable .btn {
+    margin: 5px auto;
+}
+
+#thetable .title {
+    font-weight: bold;
+}
+
+.nav-soiree {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin:5px auto;
+}
