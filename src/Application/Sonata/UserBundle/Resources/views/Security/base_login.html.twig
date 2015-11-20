@@ -17,7 +17,6 @@ file that was distributed with this source code.
             audioElement.setAttribute('src', path);
             audioElement.play();
         }
-
     </script>
 {% endblock %}
 {% block body %}
@@ -76,13 +75,12 @@ file that was distributed with this source code.
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <input type="submit" id="_submit" name="_submit" class="btn btn-primary moi"
+                            <div>
+                                <input type="submit" id="_submit" onclick="javascript:PlaySound('{{ asset('bundles/wildparty/986.mp3') }}');" name="_submit" class="btn btn-primary moi"
                                        value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"/>
                             </div>
                         </div>
-                        <button id="bt" class="btn btn-info moi" onclick="javascript:PlaySound('986.mp3');"><a href="{{ path('sonata_user_registration_register') }}">inscription</a>
-                        </button>
+                        <a class="btn btn-info moi" href="{{ path('sonata_user_registration_register') }}">inscription</a>
 
                     </form>
                 </div>
