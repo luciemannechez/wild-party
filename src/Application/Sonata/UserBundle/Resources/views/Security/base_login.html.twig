@@ -80,7 +80,7 @@ file that was distributed with this source code.
                                        value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"/>
                             </div>
                         </div>
-                        <a class="btn btn-info moi" href="{{ path('sonata_user_registration_register') }}">inscription</a>
+                        <a class="btn btn-info moi" onclick="javascript:PlaySound('{{ asset('bundles/wildparty/986.mp3') }}');"  href="{{ path('sonata_user_registration_register') }}">inscription</a>
 
                     </form>
                 </div>
