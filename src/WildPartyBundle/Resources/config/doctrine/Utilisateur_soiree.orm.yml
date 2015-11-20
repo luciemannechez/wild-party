@@ -2,6 +2,9 @@ WildPartyBundle\Entity\Utilisateur_soiree:
     type: entity
     table: null
     repositoryClass: WildPartyBundle\Entity\Utilisateur_soireeRepository
+    Listeners:
+        UtilisateurSoireeListener:
+            preUpdate: [preUpdate]
     id:
         id:
             type: integer
@@ -13,6 +16,13 @@ WildPartyBundle\Entity\Utilisateur_soiree:
             type: boolean
         montant:
             type: float
+        penalites:
+            type: float
+        retard:
+            type: string
+            nullable: true
+        date_inscription:
+            type: datetime
 
     manyToOne:
         soiree:

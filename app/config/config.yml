@@ -113,6 +113,7 @@ sonata_user:
 sonata_admin:
     security:
         handler: sonata.admin.security.handler.role
+    title:                'WildParty Admin'
 
 sonata_doctrine_orm_admin:
     templates:

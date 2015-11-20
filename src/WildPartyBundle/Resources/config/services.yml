@@ -2,6 +2,13 @@ services:
 #    wild_party.example:
 #        class: WildPartyBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    admin.utilisateur_soiree:
+        class: WildPartyBundle\Admin\UtilisateurSoireeAdmin
+        arguments: [~, WildPartyBundle\Entity\Utilisateur_soiree, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Utilisateur par soirée, group: Utilisateurs inscrits aux soirées }
+
     admin.soiree:
         class: WildPartyBundle\Admin\SoireeAdmin
         arguments: [~, WildPartyBundle\Entity\Soiree, WildPartyBundle:SoireeAdmin]
@@ -12,10 +19,9 @@ services:
         class: WildPartyBundle\Admin\TypeSoireeAdmin
         arguments: [~, WildPartyBundle\Entity\TypeSoiree, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Type soirée, group: Types soirées }
+            - { name: sonata.admin, manager_type: orm, label: Type de soirée, group: Types de soirées }
 
-    admin.utilisateur_soiree:
-        class: WildPartyBundle\Admin\UtilisateurSoireeAdmin
-        arguments: [~, WildPartyBundle\Entity\Utilisateur_soiree, ~]
+    wild_party.utilisateur_soiree_listener:
+        class: WildPartyBundle\Listener\UtilisateurSoireeListener
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Utilisateur soirée, group: Utilisateur soirées }
+            - { name: doctrine.event_listener, event: preUpdate }

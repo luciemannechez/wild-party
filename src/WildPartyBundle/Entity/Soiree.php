@@ -26,9 +26,11 @@ class Soiree
     {
         if (in_array($this->type->getPrixFixe(), array(true))) {
             // If you're using the new 2.5 validation API (you probably are!)
-            $context->buildViolation('Le prix doit être renseigné')
-                ->atPath('prix')
-                ->addViolation();
+            if (!$this->getPrix()) {
+                $context->buildViolation('Le prix doit être renseigné')
+                    ->atPath('prix')
+                    ->addViolation();
+            }
         }
     }
 

@@ -26,7 +26,9 @@ class UtilisateurSoireeAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('paye');
+            ->add('paye')
+            ->add('user')
+            ->add('penalites', 'doctrine_orm_number');
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -36,6 +38,9 @@ class UtilisateurSoireeAdmin extends Admin
             ->add('soiree')
             ->add('paye')
             ->add('montant')
+            ->add('penalites')
+            ->add('date_inscription')
+            ->add('retard')
             ->add('_action', 'actions', array(
                     'actions' => array(
                     'show' => array(),

@@ -10,3 +10,7 @@ services:
     admin_success_handler:
         class: WildPartyBundle\Services\AuthenticationHandler
         arguments: [@router]
+
+    sonata.user.admin.group:
+        abstract: true
+        public: false

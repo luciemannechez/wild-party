@@ -3,6 +3,7 @@
 namespace WildPartyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints\DateTime;
 use WildPartyBundle\Entity\Soiree;
 use Application\Sonata\UserBundle\Entity\User;
 use WildPartyBundle\Entity\Utilisateur_soiree;
@@ -49,6 +50,7 @@ class AffichageSoireeController extends Controller
             $entity = new Utilisateur_soiree();
             $entity->setUser($user);
             $entity->setSoiree($id_soiree);
+            $entity->setDateInscription(new \DateTime('now'));
 
             if ($soiree->getNbPlace() > 0) {
                 $soiree->setNbPlace($soiree->getNbPlace() - 1);

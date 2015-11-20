@@ -1,6 +1,8 @@
 <?php
 
 namespace WildPartyBundle\Entity;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
+
 
 /**
  * Utilisateur_soiree
@@ -90,7 +92,7 @@ class Utilisateur_soiree
     /**
      * @var \WildPartyBundle\Entity\Soiree
      */
-    private $soiree;
+    protected $soiree;
 
     /**
      * @var \Application\Sonata\UserBundle\Entity\User
@@ -173,5 +175,92 @@ class Utilisateur_soiree
     public function getInscrit()
     {
         return $this->inscrit;
+    }
+    /**
+     * @var float
+     */
+    private $penalites = 0;
+
+
+    /**
+     * Set penalites
+     *
+     * @param float $penalites
+     *
+     * @return Utilisateur_soiree
+     */
+    public function setPenalites($penalites)
+    {
+        $this->penalites = $penalites;
+
+        return $this;
+    }
+
+    /**
+     * Get penalites
+     *
+     * @return float
+     */
+    public function getPenalites()
+    {
+        return $this->penalites;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $date_inscription;
+
+
+    /**
+     * Set dateInscription
+     *
+     * @param \DateTime $dateInscription
+     *
+     * @return Utilisateur_soiree
+     */
+    public function setDateInscription($dateInscription)
+    {
+        $this->date_inscription = $dateInscription;
+
+        return $this;
+    }
+
+    /**
+     * Get dateInscription
+     *
+     * @return \DateTime
+     */
+    public function getDateInscription()
+    {
+        return $this->date_inscription;
+    }
+    /**
+     * @var string
+     */
+    private $retard;
+
+
+    /**
+     * Set retard
+     *
+     * @param string $retard
+     *
+     * @return Utilisateur_soiree
+     */
+    public function setRetard($retard)
+    {
+        $this->retard = $retard;
+
+        return $this;
+    }
+
+    /**
+     * Get retard
+     *
+     * @return string
+     */
+    public function getRetard()
+    {
+        return $this->retard;
     }
 }
