@@ -1,13 +1,75 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/wildparty/css/tablesaw.css') }}">
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('bundles/wildparty/js/tablesaw.js') }}"></script>
+    <script src="{{ asset('bundles/wildparty/js/tablesaw-init.js') }}"></script>
 {% endblock %}
 
 {% block body %}
 
-    <ul>
+    <table class="tablesaw table table-striped" data-tablesaw-sortable data-tablesaw-sortable-switch>
+        <thead>
+            <tr>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Nom</th>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Description</th>
+                <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="3">Date</th>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Type soirée</th>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"><abbr title="Rotten Tomato Rating">Initiateur</abbr></th>
+                <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Nombre de places</th>
+                <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Nombre de personnes</th>
+                <th scope="col" data-tablesaw-sortable-col data-sortable-numeric data-tablesaw-priority="4">Prix</th>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+                {% for soiree in soirees %}
+                <tr>
+                    <td class="title">{{ soiree.nom }}</td>
+                    <td>{{ soiree.description }}</td>
+                    <td>{{ soiree.dateDebut|date('Y-m-d H:i') }}</td>
+                    <td>{{ soiree.type }}</td>
+                    <td>{{ soiree.user.username }}</td>
+                    <td>{{ soiree.nbPlace }}</td>
+                    <td>{{ soiree.nbPersonnes }}</td>
+                    <td>{{ soiree.prix }}</td>
+                    <td>
+                        {% if soiree.nbPlace > 0 %}
+                            <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
+                                {% if soiree.inscrit == true %}
+                                    Se désinscrire
+                                {% else %}
+                                    S'inscrire
+                                {% endif %}
+                            </a>
+                        {% elseif soiree.nbPlace == -1 %}
+                            <a href="{{ path('wild_party_inscription',{ 'id_soiree': soiree.idSoiree }) }}" class="btn btn-primary">
+                                {% if soiree.inscrit == true %}
+                                    Se désinscrire
+                                {% else %}
+                                    S'inscrire
+                                {% endif %}
+                            </a>
+                        {% else %}
+                            <button type="button" disabled class="btn btn-primary">Complet</button>
+                        {% endif %}
+
+                        {% if soiree.user == app.user %}
+                            <a href="{{ path('soiree_edit',{ 'id': soiree.idSoiree }) }}" class="btn btn-primary">
+                                Editer
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+
+{#    <ul>
 
         {% for soiree in soirees %}
 
@@ -64,7 +126,7 @@
             {% endif %}
             <br/>
         {% endfor %}
-    </ul>
+    </ul>#}
     {% if old == false %}
         <a href="{{ path('soiree_new') }}" class="btn btn-danger">Proposer une soirée</a>
         <a href="{{ path('wild_party_old_soiree') }}" class="btn btn-danger">Anciennes soirées</a>
