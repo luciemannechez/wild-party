@@ -19,7 +19,7 @@
 
         {% if app.user %}
             <h1 class="text-center bienvenue">Wild Party</h1>
-            <button class="btn btn-danger center-block" ><a href="{{ path('sonata_user_admin_security_logout') }}">Déconnexion</a></button>
+            <button class="btn btn-danger center-block" onclick="javascript:PlaySound('{{ asset('bundles/wildparty/hey.mp3') }}');"><a href="{{ path('sonata_user_admin_security_logout') }}">Déconnexion</a></button>
         {% else %}
             <h1 class="text-center bienvenue">Wild Party</h1>
         {% endif %}
@@ -35,8 +35,15 @@
     </div>
 </div>
 <script src="{{ asset('bundles/wildparty/js/jquery-2.1.4.min.js') }}"></script>
-{% block javascripts %}
 
+{% block javascripts %}
 {% endblock %}
+<script>
+    function PlaySound(path) {
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', path);
+        audioElement.play();
+    }
+</script>
 </body>
 </html>
