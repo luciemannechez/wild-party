@@ -46,6 +46,8 @@ class SoireeController extends Controller
 
             $entity->setUser($user);
 
+
+
             $em->persist($entity);
             $em->flush();
 
