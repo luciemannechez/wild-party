@@ -22,7 +22,11 @@
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "sonata-project/easy-extends-bundle": "^2.1",
         "sonata-project/user-bundle": "^2.2",
-        "knplabs/knp-menu-bundle": "~1.1"
+        "knplabs/knp-menu-bundle": "~1.1",
+        "mopa/bootstrap-bundle": "dev-master",
+        "twbs/bootstrap": "dev-master",
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "craue/formflow-bundle": "~2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

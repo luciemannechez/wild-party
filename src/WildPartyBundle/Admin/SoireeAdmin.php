@@ -41,7 +41,6 @@ class SoireeAdmin extends Admin
             ->add('user')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
                 )
