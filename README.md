@@ -53,8 +53,9 @@ L'administrateur pourra ainsi accéder à cette partie afin de signifier si l'ut
 
 1. Commenter, factoriser et nettoyer le code.
 2. Pouvoir cliquer sur le nombre de personnes afin d'afficher la liste des utilisateurs présents à la soirée
-3. Améliorer l'esthétique général de l'application, la rendre plus agréable sur mobile. Lui donner une identité propre.
-4. Ajouté un champs si la soirée a bien été payée ou non pour les soirées où l'on est inscrit.
+3. Lorsqu'un utilisateur (sur la partie front) créé une soirée, il est automatiquement inscrit à celle-ci (mais il peut se désinscrire)
+4. Améliorer l'esthétique général de l'application, la rendre plus agréable sur mobile. Lui donner une identité propre.
+5. Ajouté un champs si la soirée a bien été payée ou non pour les soirées où l'on est inscrit.
 
 **Lors de l'inscription :**
 Ajouter un champs type commentaire facultatif qui permet de rentrer ce que la personne ramène lors de la soirée ou d'autres informations
